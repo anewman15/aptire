@@ -1,8 +1,8 @@
 class BaseAccount < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  # devise :database_authenticatable, :registerable,
-  #        :recoverable, :rememberable, :validatable
+  # :recoverable, :rememberable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :confirmable, :validatable
 
   def initialize(*args)
     raise 'BaseAccount cannot be instantiated! WTH are you doing dev?' if instance_of(BaseAccount)
