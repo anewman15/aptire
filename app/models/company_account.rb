@@ -1,2 +1,2 @@
-class CompanyAccount < ApplicationRecord
+class CompanyAccount < BaseAccount
 end
