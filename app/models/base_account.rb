@@ -5,7 +5,7 @@ class BaseAccount < ApplicationRecord
          :confirmable, :validatable
 
   def initialize(*args)
-    raise 'BaseAccount cannot be instantiated! WTH are you doing dev?' if instance_of(BaseAccount)
+    raise 'BaseAccount cannot be instantiated! WTH are you doing dev?' if instance_of?(BaseAccount)
 
     super
   end
