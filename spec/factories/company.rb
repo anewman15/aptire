@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :company_account do
+  factory :company do
     email { Faker::Internet.unique.email }
     username { Faker::Internet.unique.username(specifier: 3..50) }
     password { '12345678' }

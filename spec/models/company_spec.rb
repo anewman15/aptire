@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe CompanyAccount, type: :model do
+RSpec.describe Company, type: :model do
   describe 'validations' do
-    subject { FactoryBot.build(:user_account) }
+    subject { FactoryBot.build(:user) }
 
     it { should validate_presence_of(:email) }
     it { should validate_length_of(:email) }
