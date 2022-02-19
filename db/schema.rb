@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 2022_02_19_132422) do
   end
 
   create_table "base_accounts", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "email", null: false
-    t.string "encrypted_password", null: false
+    t.string "username", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "type"
     t.datetime "remember_created_at"
     t.string "confirmation_token"
