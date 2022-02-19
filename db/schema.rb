@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_130232) do
+ActiveRecord::Schema.define(version: 2022_02_19_132422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "allowlisted_jwts", force: :cascade do |t|
+    t.string "jti", null: false
+    t.string "aud"
+    t.datetime "exp", null: false
+    t.bigint "base_accounts_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["base_accounts_id"], name: "index_allowlisted_jwts_on_base_accounts_id"
+    t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
+  end
+
   create_table "base_accounts", force: :cascade do |t|
-    t.string "username", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "type"
     t.datetime "remember_created_at"
     t.string "confirmation_token"
@@ -31,4 +42,5 @@ ActiveRecord::Schema.define(version: 2022_02_16_130232) do
     t.index ["email"], name: "index_base_accounts_on_email", unique: true
   end
 
+  add_foreign_key "allowlisted_jwts", "base_accounts", column: "base_accounts_id", on_delete: :cascade
 end
