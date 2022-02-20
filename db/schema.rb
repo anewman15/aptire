@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2022_02_19_132422) do
     t.string "jti", null: false
     t.string "aud"
     t.datetime "exp", null: false
-    t.bigint "base_accounts_id", null: false
+    t.bigint "base_account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["base_accounts_id"], name: "index_allowlisted_jwts_on_base_accounts_id"
+    t.index ["base_account_id"], name: "index_allowlisted_jwts_on_base_account_id"
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
   end
 
@@ -42,5 +42,5 @@ ActiveRecord::Schema.define(version: 2022_02_19_132422) do
     t.index ["email"], name: "index_base_accounts_on_email", unique: true
   end
 
-  add_foreign_key "allowlisted_jwts", "base_accounts", column: "base_accounts_id", on_delete: :cascade
+  add_foreign_key "allowlisted_jwts", "base_accounts", on_delete: :cascade
 end
